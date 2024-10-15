@@ -166,6 +166,10 @@ sub getImage {
 
 		main::DEBUGLOG && $log->debug("Found URL to get artwork: $url");
 
+  		# Attempting fix for https://github.com/LMS-Community/slimserver/issues/1182
+  		# Try to make the url https:// instead
+                $url =~ s|https:/|https://|g;
+  		
 		my $pre_shrunk;
 		my %headers;
 		# use external image proxy if one is defined
